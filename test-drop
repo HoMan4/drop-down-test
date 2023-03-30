@@ -1,0 +1,34 @@
+name: github-action-dropdown-list-input
+
+ 
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
+        default: 'sandbox,dev,uat,prod'
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - a
+        - b
+        - c
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+ 
+
+    steps:
+       - name: Environment choice
+         run: | 
+          echo "environment is ${{ github.event.inputs.environment }}"
+          echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }}
+          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
